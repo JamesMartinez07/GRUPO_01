@@ -127,7 +127,7 @@ Mostrar "Prioridad actualizada"
 Fin
 ```
 
-## 2.3 Diagramas de Flujo
+## 2.1 Diagramas de Flujo
 
 A continuación, se describen los diagramas de flujo correspondientes a los procesos principales del sistema:
 
@@ -174,7 +174,7 @@ Fin
 
 ---
 
-## 2.4 Justificación del diseño
+## 2.2 Justificación del diseño
 
 El diseño del sistema se basa en el uso de estructuras de datos dinámicas, lo que permite una gestión flexible de los procesos sin depender de un tamaño fijo en memoria.
 
