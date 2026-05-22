@@ -1,58 +1,93 @@
-# Capítulo 1: Análisis del Problema
+# Estructuras de Datos Propuestas
 
-## 1. Descripción del problema
-
-El presente proyecto consiste en el desarrollo de un Sistema de Gestión de Procesos que simula de manera simplificada el funcionamiento de un sistema operativo. Este sistema tiene como finalidad administrar procesos, organizar su ejecución en el CPU según niveles de prioridad y controlar la asignación de memoria.
-
-El problema principal radica en la necesidad de gestionar múltiples procesos de forma eficiente, considerando que cada uno puede tener distinta prioridad y requerimientos de memoria. Para ello, se busca implementar una solución que permita registrar, modificar, eliminar y ejecutar procesos, manteniendo un flujo ordenado y coherente dentro del sistema.
-
-Asimismo, el sistema debe representar la interacción entre tres componentes fundamentales: el gestor de procesos, el planificador de CPU y el gestor de memoria. Todo esto se realizará utilizando estructuras de datos dinámicas lineales, sin el uso de librerías predefinidas, lo cual implica un mayor control sobre la lógica de implementación.
+Para el desarrollo del Sistema de Gestión de Procesos, se decidió implementar tres estructuras de datos dinámicas lineales: lista enlazada, cola de prioridad y pila. Estas fueron construidas desde cero en C++, sin utilizar librerías predefinidas, con el objetivo de comprender su funcionamiento interno y aplicarlas a un problema real.
 
 ---
 
-## 2. Requerimientos del sistema
+## Lista Enlazada Simple (Gestor de Procesos)
 
-### 2.1 Requerimientos Funcionales
+La lista enlazada se implementa como una estructura formada por nodos conectados entre sí mediante punteros. Cada nodo contiene la información de un proceso (ID, nombre y prioridad), además de un puntero llamado `siguiente`, que permite enlazar un nodo con otro.
 
-**RF-01: Registro de procesos**  
-El sistema debe permitir ingresar nuevos procesos solicitando un identificador único (ID), nombre y nivel de prioridad.
+A diferencia de los arreglos, esta estructura no tiene un tamaño fijo, lo que permite agregar o eliminar procesos dinámicamente durante la ejecución del programa sin desperdiciar memoria.
 
-**RF-02: Eliminación de procesos**  
-El sistema debe permitir eliminar procesos existentes mediante la búsqueda por su ID.
+Ejemplo de representación:
 
-**RF-03: Búsqueda de procesos**  
-El sistema debe permitir localizar procesos utilizando su ID o nombre.
+[P1] -> [P2] -> [P3] -> NULL
 
-**RF-04: Planificación de CPU**  
-El sistema debe gestionar la ejecución de procesos mediante una cola de prioridad, garantizando que los procesos con mayor prioridad sean atendidos primero.
+Operaciones principales:
 
-**RF-05: Modificación de prioridad**  
-El sistema debe permitir modificar la prioridad de un proceso existente y reordenar la cola de CPU según corresponda.
-
-**RF-06: Asignación de memoria**  
-El sistema debe simular la asignación de memoria utilizando una estructura tipo pila, permitiendo registrar bloques asignados a procesos.
-
-**RF-07: Liberación de memoria**  
-El sistema debe permitir liberar memoria siguiendo el principio LIFO (último en entrar, primero en salir).
+- Inserción: Para insertar un proceso, se crea un nuevo nodo y se recorre la lista hasta llegar al último elemento, donde se enlaza el nuevo nodo.
+- Eliminación: Se busca el nodo por su ID y se ajustan los punteros para retirarlo de la lista sin afectar los demás nodos.
+- Búsqueda: Se recorre la lista nodo por nodo hasta encontrar el proceso deseado, ya sea por ID o nombre.
 
 ---
 
-### 2.2 Requerimientos No Funcionales
+## Cola de Prioridad (Planificador de CPU)
 
-**RNF-01: Uso de estructuras nativas**  
-El sistema debe ser implementado utilizando exclusivamente estructuras de datos dinámicas lineales (listas enlazadas, pilas y colas), sin el uso de librerías externas.
+La cola de prioridad se basa en el principio FIFO (First In, First Out), pero se adapta para ordenar los procesos según su nivel de prioridad. Esto significa que los procesos más importantes no necesariamente esperan su turno, sino que se colocan en posiciones más adelantadas.
 
-**RNF-02: Interfaz de usuario**  
-La interacción con el sistema debe realizarse mediante una interfaz de consola clara, mostrando instrucciones y resultados comprensibles.
+Esta estructura permite simular el comportamiento del CPU, donde los procesos con mayor prioridad son ejecutados primero.
 
-**RNF-03: Validación de datos**  
-El sistema debe validar los datos ingresados por el usuario, evitando errores como IDs duplicados, campos vacíos o valores fuera de rango.
+Ejemplo de representación:
 
-**RNF-04: Rendimiento**  
-El sistema debe ejecutar las operaciones básicas de manera eficiente, garantizando tiempos de respuesta adecuados incluso con múltiples procesos.
+[Alta] -> [Media] -> [Baja]
 
-**RNF-05: Mantenibilidad**  
-El código debe estar organizado, estructurado y comentado de forma clara, facilitando su comprensión y futuras modificaciones.
+Operaciones principales:
 
-**RNF-06: Consistencia de datos**  
-El sistema debe mantener la integridad de la información en todo momento, evitando pérdidas o inconsistencias durante las operaciones.
+- Encolar: Inserta un proceso en la cola respetando su prioridad, ubicándolo en la posición correcta.
+- Desencolar: Elimina el proceso que se encuentra al inicio de la cola, el cual tiene mayor prioridad.
+- Visualización: Permite mostrar el estado actual de la cola y el orden en que se ejecutarán los procesos.
+
+---
+
+## Pila / Stack (Gestor de Memoria)
+
+La pila se implementa bajo el principio LIFO (Last In, First Out), lo que significa que el último elemento en ingresar es el primero en salir. Esta estructura se utiliza para simular la gestión de memoria del sistema.
+
+Cada vez que un proceso solicita memoria, se agrega un bloque a la pila (push), y cuando se libera memoria, se elimina el último bloque ingresado (pop).
+
+Ejemplo de representación:
+
+[P3]  
+[P2]  
+[P1]  
+
+Operaciones principales:
+
+- Push: Inserta un nuevo elemento en la cima de la pila.
+- Pop: Elimina el elemento que se encuentra en la cima.
+- Estado: Permite visualizar los elementos actuales almacenados en la pila.
+
+---
+
+## Relación entre las estructuras
+
+Cada una de las estructuras cumple un rol específico dentro del sistema:
+
+- La lista enlazada se encarga de almacenar todos los procesos registrados.
+- La cola de prioridad organiza la ejecución de los procesos en el CPU según su importancia.
+- La pila gestiona la memoria asignada a los procesos.
+
+Estas tres estructuras trabajan de manera conjunta para simular el funcionamiento básico de un sistema operativo, permitiendo una correcta organización y control de los recursos.
+
+---
+
+## Justificación de la elección
+
+Se eligieron estructuras de datos dinámicas debido a que el sistema debe manejar una cantidad variable de procesos, lo cual no sería eficiente con estructuras estáticas como los arreglos.
+
+La lista enlazada permite una inserción y eliminación flexible de elementos en tiempo de ejecución. La cola de prioridad resulta adecuada para representar la planificación del CPU, ya que prioriza automáticamente los procesos más importantes. Por último, la pila refleja de forma adecuada la forma en que se gestiona la memoria en muchos sistemas, siguiendo un orden inverso de uso.
+
+En conjunto, estas estructuras permiten desarrollar una solución eficiente, organizada y coherente con el problema planteado.
+
+---
+
+## Definición en código
+
+```cpp
+struct Proceso {
+    int id;
+    char nombre[50];
+    int prioridad;
+    Proceso* siguiente;
+};
