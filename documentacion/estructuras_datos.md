@@ -16,7 +16,7 @@ En Dev-C++ la base de todo nuestro código va a ser este `struct` para crear cad
 ```cpp
 struct Proceso {
     int id;               // El número del proceso
-    char nombre[50];      // Su nombre (ej. "Navegador")
+    char nombre[50];      // Su nombre 
     int prioridad;        // Qué tan importante es (Alta, Media, Baja)
     Proceso* siguiente;   // El puntero para amarrarlo con el siguiente nodo
 };
