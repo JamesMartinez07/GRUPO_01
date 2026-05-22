@@ -205,9 +205,9 @@ El desarrollo del proyecto se organizó en un cronograma de una semana para la p
 
 ## 2. Acta de Reunión N° 01
 
-Fecha: [Colocar fecha]  
-Hora: [Colocar hora]  
-Medio: [Presencial / Virtual]  
+Fecha: [21/05/20026]  
+Hora: [7:00 pm]  
+Medio: [Virtual]  
 
 Líder: Gabriel  
 Integrantes: Gabriel, Angel, James, Caleb  
