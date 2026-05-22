@@ -70,6 +70,60 @@ Algoritmo ModificarPrioridad
         FinSi
     FinMientras
 
+
+# Diagramas de Flujo
+
+## 1. Diagrama de Flujo: Registrar Proceso
+
+Inicio  
+↓  
+Solicitar ID, nombre y prioridad  
+↓  
+¿Datos válidos?  
+→ No → Mostrar error → Volver a pedir datos  
+→ Sí ↓  
+Crear nuevo nodo (Proceso)  
+↓  
+¿Lista vacía?  
+→ Sí → Nuevo nodo = inicio de lista  
+→ No ↓  
+Recorrer lista hasta el final  
+↓  
+Insertar nodo al final  
+↓  
+Llamar a EncolarPorPrioridad  
+↓  
+Mostrar "Proceso registrado correctamente"  
+↓  
+Fin  
+
+---
+
+## 2. Diagrama de Flujo: Modificar Prioridad
+
+Inicio  
+↓  
+Solicitar ID del proceso  
+↓  
+¿Lista vacía?  
+→ Sí → Mostrar "No hay procesos" → Fin  
+→ No ↓  
+Recorrer lista  
+↓  
+¿Proceso encontrado?  
+→ No → Mostrar "ID no existe" → Fin  
+→ Sí ↓  
+Mostrar datos del proceso  
+↓  
+Solicitar nueva prioridad  
+↓  
+Actualizar prioridad  
+↓  
+Llamar a ReacomodarColaCPU  
+↓  
+Mostrar "Prioridad actualizada"  
+↓  
+Fin  
     Si Encontrado == Falso Entonces
         Escribir "Ese ID no existe en el sistema."
     FinSi
