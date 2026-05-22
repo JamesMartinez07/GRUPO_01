@@ -101,6 +101,7 @@ Fin
 
 ## 2. Diagrama de Flujo: Modificar Prioridad
 
+```text
 Inicio
 ↓
 Solicitar ID del proceso
@@ -124,3 +125,4 @@ Llamar a ReacomodarColaCPU
 Mostrar "Prioridad actualizada"
 ↓
 Fin
+```
