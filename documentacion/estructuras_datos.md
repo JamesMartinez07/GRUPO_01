@@ -1,22 +1,26 @@
-# Estructuras de Datos que vamos a usar
+# Capítulo 1: Análisis del Problema
 
-Para este proyecto del gestor de procesos vamos a armar tres estructuras dinámicas desde cero usando punteros (nada de librerías raras):
+## 1. Descripción del problema
 
-1. **Lista Enlazada Simple:** La usaremos como la base de datos de todo el programa para guardar los procesos. Cada proceso va a ser un nodo conectado al que sigue por un puntero.
-2. **Cola de Prioridad:** Servirá para el planificador del CPU. Los procesos entran en fila, pero si uno tiene prioridad alta se acomoda adelante para que el procesador lo atienda primero.
-3. **Pila:** Con esto simulamos la memoria RAM. Funciona al revés: el último bloque de memoria que asignamos es el primero que tenemos que borrar (método LIFO).
-
-*¿Por qué hacemos esto?* Porque en un sistema operativo real no sabes cuántas tareas va a abrir el usuario. Si usáramos arreglos fijos, limitaríamos el programa o desperdiciaríamos memoria RAM guardando espacio para nada. Con los punteros, la memoria crece y se achica sola según se necesite.
+El proyecto consiste en desarrollar un **Sistema de Gestión de Procesos** que simula de forma simplificada la administración de tareas y recursos dentro de un sistema operativo. El problema central es coordinar eficientemente tres componentes críticos sin usar librerías predefinidas: un Gestor de Procesos, un Planificador de CPU y un Gestor de Memoria. El sistema busca resolver la concurrencia, la organización por prioridades y la liberación controlada de bloques de memoria, garantizando estabilidad y un flujo lógico de datos a través de consola.
 
 ---
 
-## El molde en código (El Struct)
-En Dev-C++ la base de todo nuestro código va a ser este `struct` para crear cada proceso:
+## 2. Requerimientos del sistema
 
-```cpp
-struct Proceso {
-    int id;               // El número del proceso
-    char nombre[50];      // Su nombre 
-    int prioridad;        // Qué tan importante es (Alta, Media, Baja)
-    Proceso* siguiente;   // El puntero para amarrarlo con el siguiente nodo
-};
+### Requerimientos Funcionales
+
+| ID | Nombre | Descripción |
+|----|--------|-------------|
+| RF-01 | Registro de Procesos | Inserción de nuevos procesos con ID único, nombre y nivel de prioridad. |
+| RF-02 | Eliminación de Procesos | Eliminación de procesos específicos buscándolos por su ID. |
+| RF-03 | Búsqueda por Atributos | Localización de un proceso usando su ID o nombre. |
+| RF-04 | Planificación de CPU | Encolamiento ordenado por prioridad y simulación de ejecución del proceso más prioritario. |
+| RF-05 | Asignación de Memoria | Simulación de reserva (Push) y liberación (Pop) de bloques de memoria en orden inverso. |
+
+### Requerimientos No Funcionales
+
+| ID | Nombre | Descripción |
+|----|--------|-------------|
+| RNF-01 | Estructuras Nativas | Todo construido desde cero con listas enlazadas, pilas y colas en Dev-C++, sin librerías externas. |
+| RNF-02 | Interfaz de Usuario | Consola clara, intuitiva y con validación contra ingresos erróneos. |
