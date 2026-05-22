@@ -1,25 +1,22 @@
-# CAPÍTULO 1 Y 2: Diseño de Estructuras de Datos
+# Estructuras de Datos que vamos a usar
 
-## 3. Estructuras de datos propuestas (Capítulo 1)
-Para dar solución integral al Sistema de Gestión de Procesos, se han planteado tres estructuras lineales dinámicas construidas desde cero:
+Para este proyecto del gestor de procesos vamos a armar tres estructuras dinámicas desde cero usando punteros (nada de librerías raras):
 
-* **Lista Enlazada Simple (Gestor de Procesos):** Consiste en una secuencia de nodos dispersos en memoria donde cada nodo almacena la información del proceso (ID, Nombre, Prioridad) y un puntero (`siguiente`) que direcciona al próximo elemento. Su naturaleza dinámica evita el desperdicio de memoria física.
-* **Cola de Prioridad (Planificador de CPU):** Estructura basada en el principio FIFO (First In, First Out), modificada de modo que la inserción de un elemento se realiza de manera ordenada según su nivel de prioridad. Los procesos con mayor prioridad se posicionan al inicio para ser "ejecutados" (desencolados) primero.
-* **Pila / Stack (Gestor de Memoria):** Estructura lineal fundamentada en el principio LIFO (Last In, First Out). Administra bloques lógicos de memoria asignados a las tareas en ejecución; el último bloque de memoria en ser reservado (Push) será obligatoriamente el primero en ser liberado (Pop).
+1. **Lista Enlazada Simple:** La usaremos como la base de datos de todo el programa para guardar los procesos. Cada proceso va a ser un nodo conectado al que sigue por un puntero.
+2. **Cola de Prioridad:** Servirá para el planificador del CPU. Los procesos entran en fila, pero si uno tiene prioridad alta se acomoda adelante para que el procesador lo atienda primero.
+3. **Pila (Stack):** Con esto simulamos la memoria RAM. Funciona al revés: el último bloque de memoria que asignamos es el primero que tenemos que borrar (método LIFO).
 
-## 4. Justificación de la elección (Capítulo 1)
-La elección de estructuras dinámicas se fundamenta en que los sistemas operativos reales manejan cargas de trabajo impredecibles. El uso de arreglos estáticos limitaría el número máximo de procesos y desperdiciaría memoria preciada. Las listas enlazadas permiten insertar y eliminar en tiempo de ejecución de forma eficiente. La cola de prioridad modela a la perfección la planificación de la CPU (anteponiendo tareas críticas), y la pila simula fielmente los segmentos de memoria volátil clásicos.
+*¿Por qué hacemos esto?* Porque en un sistema operativo real no sabes cuántas tareas va a abrir el usuario. Si usáramos arreglos fijos, limitaríamos el programa o desperdiciaríamos memoria RAM guardando espacio para nada. Con los punteros, la memoria crece y se achica sola según se necesite.
 
 ---
 
-## 1. Descripción de estructuras de datos y operaciones (Capítulo 2)
-A nivel de código en Dev-C++, las estructuras se definirán mediante `struct` y punteros nativos de la siguiente manera:
+## El molde en código (El Struct)
+En Dev-C++ la base de todo nuestro código va a ser este `struct` para crear cada proceso:
 
-### Estructura de un Proceso (Nodo de la Lista)
 ```cpp
 struct Proceso {
-    int id;
-    char nombre[50];
-    int prioridad;
-    Proceso* siguiente;
+    int id;               // El número del proceso
+    char nombre[50];      // Su nombre (ej. "Navegador")
+    int prioridad;        // Qué tan importante es (Alta, Media, Baja)
+    Proceso* siguiente;   // El puntero para amarrarlo con el siguiente nodo
 };
