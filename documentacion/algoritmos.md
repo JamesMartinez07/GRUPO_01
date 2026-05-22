@@ -209,7 +209,7 @@ Fecha: [21/05/20026]
 Hora: [7:00 pm a 0:00 am]  
 Medio: [Virtual]  
 
-Líder: Gabriel  
+Líder: Caleb
 Integrantes: Gabriel, Angel, James, Caleb  
 
 Objetivos:
