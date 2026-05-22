@@ -101,30 +101,26 @@ Fin
 
 ## 2. Diagrama de Flujo: Modificar Prioridad
 
-Inicio  
-↓  
-Solicitar ID del proceso  
-↓  
-¿Lista vacía?  
-→ Sí → Mostrar "No hay procesos" → Fin  
-→ No ↓  
-Recorrer lista  
-↓  
-¿Proceso encontrado?  
-→ No → Mostrar "ID no existe" → Fin  
-→ Sí ↓  
-Mostrar datos del proceso  
-↓  
-Solicitar nueva prioridad  
-↓  
-Actualizar prioridad  
-↓  
-Llamar a ReacomodarColaCPU  
-↓  
-Mostrar "Prioridad actualizada"  
-↓  
-Fin  
-    Si Encontrado == Falso Entonces
-        Escribir "Ese ID no existe en el sistema."
-    FinSi
-FinAlgoritmo
+Inicio
+↓
+Solicitar ID del proceso
+↓
+¿Lista vacía?
+→ Sí → Mostrar "No hay procesos registrados" → Fin
+→ No ↓
+Recorrer lista enlazada
+↓
+¿Proceso encontrado?
+→ No → Mostrar "Ese ID no existe en el sistema" → Fin
+→ Sí ↓
+Mostrar datos del proceso
+↓
+Solicitar nueva prioridad
+↓
+Actualizar prioridad del proceso
+↓
+Llamar a ReacomodarColaCPU
+↓
+Mostrar "Prioridad actualizada"
+↓
+Fin
