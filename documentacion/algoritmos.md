@@ -126,3 +126,117 @@ Mostrar "Prioridad actualizada"
 ↓
 Fin
 ```
+
+## 2.3 Diagramas de Flujo
+
+A continuación, se describen los diagramas de flujo correspondientes a los procesos principales del sistema:
+
+### Diagrama de flujo: Registrar Proceso
+
+Inicio  
+↓  
+Solicitar ID, nombre y prioridad  
+↓  
+Crear nuevo nodo (Proceso)  
+↓  
+¿Lista vacía?  
+→ Sí: Insertar como primer nodo  
+→ No: Recorrer hasta el último nodo e insertar  
+↓  
+Encolar proceso según prioridad  
+↓  
+Mostrar mensaje de confirmación  
+↓  
+Fin  
+
+---
+
+### Diagrama de flujo: Modificar Prioridad de Proceso
+
+Inicio  
+↓  
+Solicitar ID del proceso  
+↓  
+¿Lista vacía?  
+→ Sí: Mostrar mensaje "No hay procesos" y finalizar  
+↓  
+Recorrer lista enlazada  
+↓  
+¿Proceso encontrado?  
+→ No: Mostrar mensaje "No encontrado"  
+→ Sí:  
+  Actualizar prioridad  
+  Reordenar cola de CPU  
+↓  
+Mostrar confirmación  
+↓  
+Fin  
+
+---
+
+## 2.4 Justificación del diseño
+
+El diseño del sistema se basa en el uso de estructuras de datos dinámicas, lo que permite una gestión flexible de los procesos sin depender de un tamaño fijo en memoria.
+
+La lista enlazada facilita la inserción y eliminación de procesos en tiempo de ejecución, lo que optimiza el uso de memoria y evita limitaciones propias de estructuras estáticas.
+
+Por otro lado, la cola de prioridad permite simular de manera eficiente la planificación del CPU, garantizando que los procesos más importantes sean atendidos primero, lo cual mejora el rendimiento general del sistema.
+
+Asimismo, el uso de una pila para la gestión de memoria permite representar de forma sencilla el comportamiento de asignación y liberación de recursos, siguiendo un orden lógico y eficiente.
+
+En conjunto, este diseño permite un flujo organizado del sistema, optimizando tanto el manejo de datos como la ejecución de procesos.
+
+---
+
+# Capítulo 4: Evidencias de Trabajo en Equipo
+
+## 1. Plan de Trabajo
+
+El desarrollo del proyecto se organizó en un cronograma de una semana para la primera entrega, distribuyendo tareas específicas a cada integrante del equipo.
+
+- Día 1: Organización del equipo, asignación de roles y creación del repositorio en GitHub.  
+- Día 2 - 3: Desarrollo del análisis del problema y diseño de estructuras de datos.  
+- Día 4: Elaboración de pseudocódigo y diagramas de flujo.  
+- Día 5: Integración de avances y revisión general.  
+- Día 6: Correcciones finales.  
+- Día 7: Entrega del trabajo.  
+
+---
+
+## 2. Acta de Reunión N° 01
+
+Fecha: [Colocar fecha]  
+Hora: [Colocar hora]  
+Medio: [Presencial / Virtual]  
+
+Líder: Gabriel  
+Integrantes: Gabriel, Angel, James, Caleb  
+
+Objetivos:
+- Analizar la consigna del proyecto  
+- Definir roles del equipo  
+- Planificar el desarrollo del trabajo  
+
+Acuerdos:
+- Gabriel será el líder del equipo  
+- Se trabajará con GitHub utilizando ramas individuales  
+- Cada integrante desarrollará su parte asignada  
+
+Compromisos:
+- Gabriel: coordinación, diagramas y revisión final  
+- Angel: análisis del problema y requerimientos  
+- James: estructuras de datos  
+- Caleb: pseudocódigo  
+
+Conclusión:
+Se estableció una organización clara del equipo y se definieron las tareas para iniciar el desarrollo del proyecto.
+
+---
+
+## 3. Uso de GitHub
+
+El equipo utilizó GitHub como herramienta de control de versiones, permitiendo organizar el trabajo de manera colaborativa.
+
+Cada integrante trabajó en su propia rama, realizando commits que evidencian su participación. Posteriormente, el líder del equipo se encargó de integrar los cambios mediante merges hacia la rama principal.
+
+Esto permitió mantener un historial claro de avances y asegurar la correcta integración del proyecto.
